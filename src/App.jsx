@@ -158,15 +158,21 @@ export default function App() {
     fontWeight: "700",
     width: "100%",
     boxShadow: `0 0 20px ${color}66`,
-    letterSpacing: "0.5px",
+    letterSpacing: "0",
   });
+
+  const ghostPinkBtn = {
+    ...primaryBtn("#ff4fb0"),
+    background: "linear-gradient(135deg, #ff79c8 0%, #ff4dae 45%, #f2369d 100%)",
+    border: "1px solid rgba(255, 178, 225, 0.5)",
+    boxShadow: "0 0 16px rgba(255, 79, 176, 0.58), 0 0 30px rgba(242, 54, 157, 0.32), inset 0 0 10px rgba(255,255,255,0.14)",
+  };
 
   const ghostBlueBtn = {
     ...primaryBtn("#6f63ff"),
     background: "linear-gradient(135deg, #7b5cff 0%, #38d7ff 58%, #8b4dff 100%)",
     border: "1px solid rgba(190, 180, 255, 0.48)",
     boxShadow: "0 0 18px rgba(123, 92, 255, 0.72), 0 0 34px rgba(56, 215, 255, 0.42), inset 0 0 12px rgba(255,255,255,0.16)",
-    textShadow: "0 0 10px rgba(255,255,255,0.5)",
   };
 
   const card = {
@@ -239,6 +245,23 @@ export default function App() {
     filter: "drop-shadow(0 0 12px #ff3d8b66) drop-shadow(0 0 16px #4dc8ff44)",
   };
 
+  const taglineStyle = {
+    textAlign: "center",
+    display: "inline-block",
+    fontSize: "14px",
+    fontWeight: "700",
+    lineHeight: "1.4",
+    color: "#f5f5f5",
+    marginBottom: "4px",
+    transform: "skewX(-9deg)",
+    transformOrigin: "center",
+    letterSpacing: "0",
+    background: "linear-gradient(90deg, #ffffff 0%, #f0f0f4 48%, #b7b7c2 100%)",
+    WebkitBackgroundClip: "text",
+    backgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  };
+
   // ── VIEWS ──────────────────────────────────────────────
 
   // MAIN
@@ -254,10 +277,10 @@ export default function App() {
         </div>
 
         <div style={{ ...card, display: "flex", flexDirection: "column", gap: "12px", marginTop: 0 }}>
-          <div style={{ textAlign: "center", fontSize: "14px", color: "#ffffff99", marginBottom: "4px" }}>
+          <div style={taglineStyle}>
             오늘, 음악으로 우주를 채우다
           </div>
-          <button style={primaryBtn("#ff3d8b")} onClick={() => { setView("ticket"); setTicketStatus(null); setTicketInput(""); }}>
+          <button style={ghostPinkBtn} onClick={() => { setView("ticket"); setTicketStatus(null); setTicketInput(""); }}>
             티켓을 구매했어요
           </button>
           <button style={ghostBlueBtn} onClick={() => setView("payment")}>

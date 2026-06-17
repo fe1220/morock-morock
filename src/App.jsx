@@ -280,10 +280,10 @@ export default function App() {
           <div style={taglineStyle}>
             오늘, 음악으로 우주를 채우다
           </div>
-          <button style={ghostPinkBtn} onClick={() => { setView("ticket"); setTicketStatus(null); setTicketInput(""); }}>
+          <button style={ghostBlueBtn} onClick={() => { setView("ticket"); setTicketStatus(null); setTicketInput(""); }}>
             티켓을 구매했어요
           </button>
-          <button style={ghostBlueBtn} onClick={() => setView("payment")}>
+          <button style={ghostPinkBtn} onClick={() => setView("payment")}>
             지금 구매할게요
           </button>
         </div>

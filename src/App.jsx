@@ -210,6 +210,13 @@ export default function App() {
     textShadow: glowPink,
   };
 
+  const ticketPromptHeading = {
+    color: "#fff",
+    fontSize: "22px",
+    fontWeight: "700",
+    lineHeight: "1.25",
+  };
+
   const pageShell = {
     width: "100%",
     maxWidth: "392px",
@@ -305,8 +312,8 @@ export default function App() {
         <button style={backBtn} onClick={() => setView("main")}>← 뒤로</button>
         <div style={{ textAlign: "center" }}>
           <div style={titleStyle}>티켓 확인</div>
-          <h2 style={{ margin: "8px 0 4px", fontSize: "22px" }}>구매하신 티켓 번호를</h2>
-          <h2 style={{ margin: "0 0 24px", fontSize: "22px" }}>입력해 주세요</h2>
+          <h2 style={{ ...ticketPromptHeading, margin: "8px 0 4px" }}>구매하신 티켓 번호를</h2>
+          <h2 style={{ ...ticketPromptHeading, margin: "0 0 24px" }}>입력해 주세요</h2>
         </div>
 
         <div style={card}>

@@ -344,14 +344,14 @@ export default function App() {
         <button style={backBtn} onClick={() => setView("main")}>← 뒤로</button>
         <div style={{ textAlign: "center" }}>
           <div style={titleStyle}>티켓 확인</div>
-          <h2 style={{ ...ticketPromptHeading, margin: "8px 0 4px" }}>구매하신 티켓 번호를</h2>
+          <h2 style={{ ...ticketPromptHeading, margin: "8px 0 4px" }}>구매하신 티켓 코드를</h2>
           <h2 style={{ ...ticketPromptHeading, margin: "0 0 24px" }}>입력해 주세요</h2>
         </div>
 
         <div style={card}>
           <input
             style={input}
-            placeholder="GLOW"
+            placeholder="CODE"
             value={ticketInput}
             onChange={e => { setTicketInput(e.target.value); setTicketStatus(null); setTicketMessage(""); }}
             onKeyDown={e => e.key === "Enter" && handleTicketCheck()}
@@ -394,7 +394,7 @@ export default function App() {
           {ticketStatus === "invalid" && (
             <div style={{ marginTop: "20px", textAlign: "center", padding: "20px", background: "rgba(255,100,0,0.1)", borderRadius: "12px", border: "1px solid #ff6400aa" }}>
               <div style={{ color: "#ff9944", fontWeight: "700", fontSize: "16px" }}>유효하지 않은 티켓이에요</div>
-              <div style={{ color: "#ffffffaa", fontSize: "13px", marginTop: "6px" }}>번호를 다시 확인해 주세요<br/>예시: GLOW</div>
+              <div style={{ color: "#ffffffaa", fontSize: "13px", marginTop: "6px" }}>코드를 다시 확인해 주세요<br/>예시: CODE</div>
             </div>
           )}
 

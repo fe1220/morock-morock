@@ -304,9 +304,9 @@ export default function App() {
       <div style={pageShell}>
         <button style={backBtn} onClick={() => setView("main")}>← 뒤로</button>
         <div style={{ textAlign: "center" }}>
-          <div style={titleStyle}>티켓 확인</div>
+          <div style={{ ...titleStyle, fontSize: "16px" }}>티켓 확인</div>
           <h2 style={{ margin: "8px 0 4px", fontSize: "22px" }}>구매하신 티켓 번호를</h2>
-          <p style={{ color: "#ffffff77", fontSize: "14px", margin: "0 0 24px" }}>입력해 주세요</p>
+          <p style={{ color: "#ffffff88", fontSize: "17px", margin: "0 0 24px" }}>입력해 주세요</p>
         </div>
 
         <div style={card}>

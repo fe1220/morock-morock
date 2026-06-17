@@ -360,9 +360,9 @@ export default function App() {
         </div>
 
         <div style={card}>
-          <div style={{ textAlign: "center", color: "#fffffff0", fontSize: "14px", lineHeight: "1.7", marginBottom: "20px", textShadow: "0 0 10px rgba(255,255,255,0.18)" }}>
+          <div style={{ textAlign: "center", color: "#fffffff0", fontSize: "17px", lineHeight: "1.75", marginBottom: "22px", textShadow: "0 0 10px rgba(255,255,255,0.16)" }}>
             아래 버튼을 눌러 카카오페이로<br/>3,000원을 송금해 주세요<br/>
-            <span style={{ fontSize: "12px", color: "#ffffffb8" }}>결제 후 스태프에게 완료 화면을 보여주세요</span>
+            <span style={{ fontSize: "15px", color: "#ffffffc8" }}>결제 후 스태프에게 완료 화면을 보여주세요</span>
           </div>
           <a
             href={KAKAO_LINK}
@@ -394,6 +394,7 @@ export default function App() {
   if (view === "pay_done") return (
     <div style={bg}>
       <div style={pageShell}>
+        <button style={backBtn} onClick={() => setView("main")}>← 처음으로</button>
         <div style={{ fontSize: "64px", margin: "40px 0 16px" }}>🎊</div>
         <div style={titleStyle}>결제 완료</div>
         <h2 style={{ margin: "8px 0 8px" }}>환영합니다!</h2>
@@ -406,9 +407,6 @@ export default function App() {
           <div style={{ color: "#ffffffaa", fontSize: "13px", marginTop: "4px" }}>2026.07.04 SAT 18:00</div>
           <div style={{ color: "#ffffff55", fontSize: "12px" }}>홍대 우주정거장</div>
         </div>
-        <button style={{ ...primaryBtn("#ff3d8b"), marginTop: "24px" }} onClick={() => setView("main")}>
-          처음으로
-        </button>
       </div>
     </div>
   );

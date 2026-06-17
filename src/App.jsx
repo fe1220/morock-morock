@@ -318,7 +318,7 @@ export default function App() {
             onKeyDown={e => e.key === "Enter" && handleTicketCheck()}
           />
           <div style={{ height: "12px" }} />
-          <button style={primaryBtn("#ff3d8b")} onClick={handleTicketCheck}>
+          <button style={ghostPinkBtn} onClick={handleTicketCheck}>
             티켓 확인하기
           </button>
 

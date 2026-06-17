@@ -211,7 +211,7 @@ export default function App() {
   };
 
   const ticketPromptHeading = {
-    color: "#fff",
+    color: "rgb(255,255,255)",
     fontSize: "22px",
     fontWeight: "700",
     lineHeight: "1.25",

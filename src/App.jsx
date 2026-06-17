@@ -165,14 +165,14 @@ export default function App() {
     ...primaryBtn("#ff4fb0"),
     background: "linear-gradient(135deg, #ff79c8 0%, #ff4dae 45%, #f2369d 100%)",
     border: "1px solid rgba(255, 178, 225, 0.5)",
-    boxShadow: "0 0 16px rgba(255, 79, 176, 0.58), 0 0 30px rgba(242, 54, 157, 0.32), inset 0 0 10px rgba(255,255,255,0.14)",
+    boxShadow: "0 0 9px rgba(255, 79, 176, 0.48), 0 0 16px rgba(242, 54, 157, 0.22), inset 0 0 7px rgba(255,255,255,0.12)",
   };
 
   const ghostBlueBtn = {
     ...primaryBtn("#6f63ff"),
     background: "linear-gradient(135deg, #7b5cff 0%, #38d7ff 58%, #8b4dff 100%)",
     border: "1px solid rgba(190, 180, 255, 0.48)",
-    boxShadow: "0 0 18px rgba(123, 92, 255, 0.72), 0 0 34px rgba(56, 215, 255, 0.42), inset 0 0 12px rgba(255,255,255,0.16)",
+    boxShadow: "0 0 10px rgba(123, 92, 255, 0.58), 0 0 18px rgba(56, 215, 255, 0.28), inset 0 0 8px rgba(255,255,255,0.13)",
   };
 
   const card = {

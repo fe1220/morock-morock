@@ -370,6 +370,7 @@ export default function App() {
             rel="noreferrer"
             style={{
               ...primaryBtn("#f9e000"),
+              background: "#f9e000",
               color: "#241000",
               textDecoration: "none",
               display: "block",

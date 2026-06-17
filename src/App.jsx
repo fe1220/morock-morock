@@ -387,7 +387,7 @@ export default function App() {
         <div style={{ textAlign: "center" }}>
           <div style={{ ...titleStyle, fontSize: "16px" }}>현장 결제</div>
           <h2 style={{ margin: "8px 0 4px", fontSize: "22px" }}>입장권 구매</h2>
-          <div style={{ fontSize: "32px", fontWeight: "800", color: "#fff", margin: "16px 0", textShadow: glowPink }}>3,000원</div>
+          <div style={{ fontSize: "32px", fontWeight: "800", color: "#fff", margin: "16px 0" }}>3,000원</div>
         </div>
 
         <div style={card}>

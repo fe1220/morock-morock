@@ -345,7 +345,7 @@ export default function App() {
             오늘, 음악으로 우주를 채우다
           </div>
           <button style={ghostPinkBtn} onClick={() => navigateTo("payment")}>
-            지금 구매할게요
+            티켓 구매하기
           </button>
         </div>
       </div>

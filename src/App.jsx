@@ -21,7 +21,7 @@ const FALLBACK_TICKETS = [
 ];
 
 const ADMIN_PASSWORD = "morock2026";
-const KAKAO_LINK = "https://qr.kakaopay.com/PLACEHOLDER";
+const KAKAO_LINK = "https://qr.kakaopay.com/FWTghOPPE5dc01755";
 const BANK_ACCOUNT = "카카오뱅크 79423225974 김상현";
 const SPACE_LAYERS = [
   "radial-gradient(circle at 52% 14%, rgba(74,19,91,.62) 0, rgba(31,7,48,.34) 25%, transparent 55%)",
@@ -51,6 +51,31 @@ export default function App() {
   useEffect(() => {
     refreshTicketCodes();
   }, []);
+
+  useEffect(() => {
+    if (window.history.state?.morockView !== "main") {
+      window.history.replaceState({ morockView: "main" }, "", window.location.href);
+    }
+
+    const handlePopState = event => {
+      setView(event.state?.morockView || "main");
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  const navigateTo = nextView => {
+    setView(nextView);
+    if (window.history.state?.morockView !== nextView) {
+      window.history.pushState({ morockView: nextView }, "", window.location.href);
+    }
+  };
+
+  const navigateHome = () => {
+    setView("main");
+    window.history.replaceState({ morockView: "main" }, "", window.location.href);
+  };
 
   const refreshTicketCodes = async () => {
     try {
@@ -319,17 +344,14 @@ export default function App() {
           <div style={taglineStyle}>
             오늘, 음악으로 우주를 채우다
           </div>
-          <button style={ghostBlueBtn} onClick={() => { setView("ticket"); setTicketStatus(null); setTicketInput(""); }}>
-            티켓을 구매했어요
-          </button>
-          <button style={ghostPinkBtn} onClick={() => setView("payment")}>
+          <button style={ghostPinkBtn} onClick={() => navigateTo("payment")}>
             지금 구매할게요
           </button>
         </div>
       </div>
 
       <div
-        onClick={() => setView("admin")}
+        onClick={() => navigateTo("admin")}
         style={{ marginTop: "16px", textAlign: "center", color: "#ffffff22", fontSize: "11px", cursor: "pointer" }}
       >
         ···
@@ -341,7 +363,7 @@ export default function App() {
   if (view === "ticket") return (
     <div style={bg}>
       <div style={pageShell}>
-        <button style={backBtn} onClick={() => setView("main")}>← 뒤로</button>
+        <button style={backBtn} onClick={navigateHome}>← 뒤로</button>
         <div style={{ textAlign: "center" }}>
           <div style={titleStyle}>티켓 확인</div>
           <h2 style={{ ...ticketPromptHeading, margin: "8px 0 4px" }}>구매하신 티켓 코드를</h2>
@@ -413,7 +435,7 @@ export default function App() {
   if (view === "payment") return (
     <div style={bg}>
       <div style={pageShell}>
-        <button style={backBtn} onClick={() => setView("main")}>← 뒤로</button>
+        <button style={backBtn} onClick={navigateHome}>← 뒤로</button>
         <div style={{ textAlign: "center" }}>
           <div style={{ ...titleStyle, fontSize: "16px" }}>현장 결제</div>
           <h2 style={{ margin: "8px 0 4px", fontSize: "22px" }}>입장권 구매</h2>
@@ -466,7 +488,7 @@ export default function App() {
     if (!adminAuth) return (
       <div style={bg}>
         <div style={pageShell}>
-          <button style={backBtn} onClick={() => setView("main")}>← 뒤로</button>
+          <button style={backBtn} onClick={navigateHome}>← 뒤로</button>
           <div style={{ textAlign: "center" }}>
             <div style={titleStyle}>🔒 어드민</div>
             <h2 style={{ margin: "8px 0 20px" }}>주최자 로그인</h2>
@@ -491,7 +513,7 @@ export default function App() {
     return (
       <div style={bg}>
         <div style={pageShell}>
-          <button style={backBtn} onClick={() => { setView("main"); setAdminAuth(false); setAdminPass(""); }}>← 나가기</button>
+          <button style={backBtn} onClick={() => { navigateHome(); setAdminAuth(false); setAdminPass(""); }}>← 나가기</button>
           <div style={titleStyle}>🎛 어드민 대시보드</div>
           <h2 style={{ margin: "8px 0 20px" }}>공연 정산 현황</h2>
 

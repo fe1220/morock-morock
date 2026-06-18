@@ -20,6 +20,19 @@ const FALLBACK_TICKETS = [
   "BEAT", "BELL"
 ];
 
+const SETLIST = [
+  ["스물다섯 스물하나", "자우림"],
+  ["박하사탕", "YB"],
+  ["입춘", "한로로"],
+  ["Creep", "Radiohead"],
+  ["소나기", "윤하"],
+  ["비망록", "버즈"],
+  ["사랑하게 될거야", "한로로"],
+  ["Pretender", "OFFICIAL HIGE DANDISM"],
+  ["Letter", "유다빈밴드"],
+  ["그대에게", "유다빈밴드"],
+];
+
 const ADMIN_PASSWORD = "morock2026";
 const KAKAO_LINK = "https://qr.kakaopay.com/FWTghOPPE5dc01755";
 const BANK_ACCOUNT = "카카오뱅크 79423225974 김상현";
@@ -326,6 +339,68 @@ export default function App() {
     WebkitTextFillColor: "transparent",
   };
 
+  const setlistSection = {
+    marginTop: "6px",
+    paddingTop: "18px",
+    borderTop: "1px solid rgba(255,255,255,0.12)",
+    textAlign: "left",
+  };
+
+  const setlistHeader = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: "12px",
+  };
+
+  const setlistTitle = {
+    color: "#ff79c8",
+    fontSize: "12px",
+    fontWeight: "800",
+    letterSpacing: "2px",
+    textTransform: "uppercase",
+    textShadow: "0 0 12px rgba(255, 79, 176, 0.45)",
+  };
+
+  const setlistCount = {
+    color: "#4dc8ffbb",
+    fontSize: "11px",
+    letterSpacing: "1px",
+    textShadow: glowBlue,
+  };
+
+  const setlistRow = {
+    display: "grid",
+    gridTemplateColumns: "24px minmax(0, 1fr)",
+    gap: "10px",
+    alignItems: "baseline",
+    padding: "8px 0",
+    borderBottom: "1px solid rgba(255,255,255,0.06)",
+  };
+
+  const setlistNumber = {
+    color: "#4dc8ff88",
+    fontSize: "11px",
+    fontWeight: "700",
+    fontVariantNumeric: "tabular-nums",
+  };
+
+  const setlistSong = {
+    color: "#fffffff0",
+    fontSize: "14px",
+    fontWeight: "700",
+    lineHeight: "1.35",
+    wordBreak: "keep-all",
+  };
+
+  const setlistArtist = {
+    color: "#ffffff78",
+    fontSize: "12px",
+    lineHeight: "1.35",
+    marginTop: "2px",
+    wordBreak: "keep-all",
+  };
+
   // ── VIEWS ──────────────────────────────────────────────
 
   // MAIN
@@ -347,6 +422,30 @@ export default function App() {
           <button style={ghostPinkBtn} onClick={() => navigateTo("payment")}>
             티켓 구매하기
           </button>
+          <div style={setlistSection}>
+            <div style={setlistHeader}>
+              <div style={setlistTitle}>Setlist</div>
+              <div style={setlistCount}>{SETLIST.length} Songs</div>
+            </div>
+            <div>
+              {SETLIST.map(([song, artist], index) => (
+                <div
+                  key={`${song}-${artist}`}
+                  style={{
+                    ...setlistRow,
+                    borderBottom: index === SETLIST.length - 1 ? "none" : setlistRow.borderBottom,
+                    padding: index === SETLIST.length - 1 ? "8px 0 0" : setlistRow.padding,
+                  }}
+                >
+                  <div style={setlistNumber}>{String(index + 1).padStart(2, "0")}</div>
+                  <div>
+                    <div style={setlistSong}>{song}</div>
+                    <div style={setlistArtist}>{artist}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 

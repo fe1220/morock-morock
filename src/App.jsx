@@ -20,22 +20,10 @@ const FALLBACK_TICKETS = [
   "BEAT", "BELL"
 ];
 
-const SETLIST = [
-  ["스물다섯 스물하나", "자우림"],
-  ["박하사탕", "YB"],
-  ["입춘", "한로로"],
-  ["Creep", "Radiohead"],
-  ["소나기", "윤하"],
-  ["비망록", "버즈"],
-  ["사랑하게 될거야", "한로로"],
-  ["Pretender", "OFFICIAL HIGE DANDISM"],
-  ["Letter", "유다빈밴드"],
-  ["그대에게", "유다빈밴드"],
-];
-
 const ADMIN_PASSWORD = "morock2026";
 const KAKAO_LINK = "https://qr.kakaopay.com/FWTghOPPE5dc01755";
 const BANK_ACCOUNT = "카카오뱅크 79423225974 김상현";
+const SETLIST_BAND_IMG = `${import.meta.env.BASE_URL}setlist-band-20260620.jpg`;
 const SPACE_LAYERS = [
   "radial-gradient(circle at 52% 14%, rgba(74,19,91,.62) 0, rgba(31,7,48,.34) 25%, transparent 55%)",
   "radial-gradient(circle at 22% 28%, rgba(255,66,183,.16) 0, rgba(255,66,183,.06) 18%, transparent 42%)",
@@ -341,126 +329,16 @@ export default function App() {
 
   const setlistSection = {
     marginTop: "6px",
-    paddingTop: "18px",
-    borderTop: "1px solid rgba(255,255,255,0.12)",
-    textAlign: "left",
+    width: "100%",
   };
 
-  const setlistHeader = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginBottom: "12px",
+  const setlistBandImage = {
+    display: "block",
+    width: "100%",
+    height: "auto",
+    borderRadius: "6px",
+    filter: "drop-shadow(0 0 18px rgba(255,66,183,0.16)) drop-shadow(0 0 22px rgba(77,200,255,0.12))",
   };
-
-  const setlistTitle = {
-    color: "#ff79c8",
-    fontSize: "12px",
-    fontWeight: "800",
-    letterSpacing: "2px",
-    textTransform: "uppercase",
-    textShadow: "0 0 12px rgba(255, 79, 176, 0.45)",
-  };
-
-  const setlistCount = {
-    color: "#4dc8ffbb",
-    fontSize: "11px",
-    letterSpacing: "1px",
-    textShadow: glowBlue,
-  };
-
-  const setlistRow = {
-    display: "grid",
-    gridTemplateColumns: "24px minmax(0, 1fr)",
-    gap: "10px",
-    alignItems: "baseline",
-    padding: "8px 0",
-    borderBottom: "1px solid rgba(255,255,255,0.06)",
-  };
-
-  const setlistNumber = {
-    color: "#4dc8ff88",
-    fontSize: "11px",
-    fontWeight: "700",
-    fontVariantNumeric: "tabular-nums",
-  };
-
-  const setlistSong = {
-    color: "#fffffff0",
-    fontSize: "14px",
-    fontWeight: "700",
-    lineHeight: "1.35",
-    wordBreak: "keep-all",
-  };
-
-  const setlistArtist = {
-    color: "#ffffff78",
-    fontSize: "12px",
-    lineHeight: "1.35",
-    marginTop: "2px",
-    wordBreak: "keep-all",
-  };
-
-  const ghostStage = {
-    position: "relative",
-    height: "96px",
-    marginTop: "16px",
-    borderTop: "1px solid rgba(255,255,255,0.08)",
-    overflow: "hidden",
-  };
-
-  const ghostGlow = {
-    position: "absolute",
-    left: "50%",
-    bottom: "0",
-    width: "220px",
-    height: "46px",
-    transform: "translateX(-50%)",
-    background: "radial-gradient(ellipse at center, rgba(77,200,255,0.28) 0%, rgba(255,79,176,0.12) 42%, transparent 72%)",
-    filter: "blur(8px)",
-  };
-
-  const ghostBody = (left, bottom, scale = 1, opacity = 1) => ({
-    position: "absolute",
-    left,
-    bottom,
-    width: `${54 * scale}px`,
-    height: `${66 * scale}px`,
-    borderRadius: `${28 * scale}px ${28 * scale}px ${16 * scale}px ${16 * scale}px`,
-    background: "linear-gradient(180deg, rgba(255,255,255,0.96), rgba(214,244,255,0.82))",
-    boxShadow: "0 0 16px rgba(77,200,255,0.34), 0 0 26px rgba(255,79,176,0.14)",
-    opacity,
-  });
-
-  const ghostEye = (left, scale = 1) => ({
-    position: "absolute",
-    top: `${21 * scale}px`,
-    left: `${left * scale}px`,
-    width: `${6 * scale}px`,
-    height: `${8 * scale}px`,
-    borderRadius: "999px",
-    background: "#171326",
-  });
-
-  const ghostMouth = scale => ({
-    position: "absolute",
-    top: `${36 * scale}px`,
-    left: `${23 * scale}px`,
-    width: `${9 * scale}px`,
-    height: `${5 * scale}px`,
-    borderRadius: "0 0 999px 999px",
-    background: "rgba(23,19,38,0.8)",
-  });
-
-  const ghostTail = (left, scale = 1) => ({
-    position: "absolute",
-    bottom: `${-5 * scale}px`,
-    left: `${left * scale}px`,
-    width: `${17 * scale}px`,
-    height: `${17 * scale}px`,
-    borderRadius: "50%",
-    background: "rgba(214,244,255,0.84)",
-  });
 
   // ── VIEWS ──────────────────────────────────────────────
 
@@ -484,55 +362,7 @@ export default function App() {
             티켓 구매하기
           </button>
           <div style={setlistSection}>
-            <div style={setlistHeader}>
-              <div style={setlistTitle}>Setlist</div>
-              <div style={setlistCount}>{SETLIST.length} Songs</div>
-            </div>
-            <div>
-              {SETLIST.map(([song, artist], index) => (
-                <div
-                  key={`${song}-${artist}`}
-                  style={{
-                    ...setlistRow,
-                    borderBottom: index === SETLIST.length - 1 ? "none" : setlistRow.borderBottom,
-                    padding: index === SETLIST.length - 1 ? "8px 0 0" : setlistRow.padding,
-                  }}
-                >
-                  <div style={setlistNumber}>{String(index + 1).padStart(2, "0")}</div>
-                  <div>
-                    <div style={setlistSong}>{song}</div>
-                    <div style={setlistArtist}>{artist}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div style={ghostStage} aria-hidden="true">
-              <div style={ghostGlow} />
-              <div style={ghostBody("9%", "8px", 0.78, 0.74)}>
-                <div style={ghostEye(17, 0.78)} />
-                <div style={ghostEye(31, 0.78)} />
-                <div style={ghostMouth(0.78)} />
-                <div style={ghostTail(0, 0.78)} />
-                <div style={ghostTail(18, 0.78)} />
-                <div style={ghostTail(36, 0.78)} />
-              </div>
-              <div style={ghostBody("39%", "14px", 1, 0.94)}>
-                <div style={ghostEye(17)} />
-                <div style={ghostEye(31)} />
-                <div style={ghostMouth(1)} />
-                <div style={ghostTail(0)} />
-                <div style={ghostTail(18)} />
-                <div style={ghostTail(36)} />
-              </div>
-              <div style={ghostBody("70%", "6px", 0.86, 0.82)}>
-                <div style={ghostEye(17, 0.86)} />
-                <div style={ghostEye(31, 0.86)} />
-                <div style={ghostMouth(0.86)} />
-                <div style={ghostTail(0, 0.86)} />
-                <div style={ghostTail(18, 0.86)} />
-                <div style={ghostTail(36, 0.86)} />
-              </div>
-            </div>
+            <img src={SETLIST_BAND_IMG} alt="MOROCK MOROCK setlist and ghost band" style={setlistBandImage} />
           </div>
         </div>
       </div>

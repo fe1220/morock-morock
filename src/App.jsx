@@ -328,16 +328,15 @@ export default function App() {
   };
 
   const setlistSection = {
-    marginTop: "6px",
-    width: "100%",
+    marginTop: "14px",
+    width: "min(454px, calc(100vw - 12px))",
   };
 
   const setlistBandImage = {
     display: "block",
     width: "100%",
     height: "auto",
-    borderRadius: "6px",
-    filter: "drop-shadow(0 0 18px rgba(255,66,183,0.16)) drop-shadow(0 0 22px rgba(77,200,255,0.12))",
+    filter: "drop-shadow(0 0 12px rgba(255,66,183,0.14)) drop-shadow(0 0 16px rgba(77,200,255,0.1))",
   };
 
   // ── VIEWS ──────────────────────────────────────────────
@@ -361,9 +360,9 @@ export default function App() {
           <button style={ghostPinkBtn} onClick={() => navigateTo("payment")}>
             티켓 구매하기
           </button>
-          <div style={setlistSection}>
-            <img src={SETLIST_BAND_IMG} alt="MOROCK MOROCK setlist and ghost band" style={setlistBandImage} />
-          </div>
+        </div>
+        <div style={setlistSection}>
+          <img src={SETLIST_BAND_IMG} alt="MOROCK MOROCK setlist and ghost band" style={setlistBandImage} />
         </div>
       </div>
 

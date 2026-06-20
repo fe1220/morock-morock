@@ -401,6 +401,67 @@ export default function App() {
     wordBreak: "keep-all",
   };
 
+  const ghostStage = {
+    position: "relative",
+    height: "96px",
+    marginTop: "16px",
+    borderTop: "1px solid rgba(255,255,255,0.08)",
+    overflow: "hidden",
+  };
+
+  const ghostGlow = {
+    position: "absolute",
+    left: "50%",
+    bottom: "0",
+    width: "220px",
+    height: "46px",
+    transform: "translateX(-50%)",
+    background: "radial-gradient(ellipse at center, rgba(77,200,255,0.28) 0%, rgba(255,79,176,0.12) 42%, transparent 72%)",
+    filter: "blur(8px)",
+  };
+
+  const ghostBody = (left, bottom, scale = 1, opacity = 1) => ({
+    position: "absolute",
+    left,
+    bottom,
+    width: `${54 * scale}px`,
+    height: `${66 * scale}px`,
+    borderRadius: `${28 * scale}px ${28 * scale}px ${16 * scale}px ${16 * scale}px`,
+    background: "linear-gradient(180deg, rgba(255,255,255,0.96), rgba(214,244,255,0.82))",
+    boxShadow: "0 0 16px rgba(77,200,255,0.34), 0 0 26px rgba(255,79,176,0.14)",
+    opacity,
+  });
+
+  const ghostEye = (left, scale = 1) => ({
+    position: "absolute",
+    top: `${21 * scale}px`,
+    left: `${left * scale}px`,
+    width: `${6 * scale}px`,
+    height: `${8 * scale}px`,
+    borderRadius: "999px",
+    background: "#171326",
+  });
+
+  const ghostMouth = scale => ({
+    position: "absolute",
+    top: `${36 * scale}px`,
+    left: `${23 * scale}px`,
+    width: `${9 * scale}px`,
+    height: `${5 * scale}px`,
+    borderRadius: "0 0 999px 999px",
+    background: "rgba(23,19,38,0.8)",
+  });
+
+  const ghostTail = (left, scale = 1) => ({
+    position: "absolute",
+    bottom: `${-5 * scale}px`,
+    left: `${left * scale}px`,
+    width: `${17 * scale}px`,
+    height: `${17 * scale}px`,
+    borderRadius: "50%",
+    background: "rgba(214,244,255,0.84)",
+  });
+
   // ── VIEWS ──────────────────────────────────────────────
 
   // MAIN
@@ -444,6 +505,33 @@ export default function App() {
                   </div>
                 </div>
               ))}
+            </div>
+            <div style={ghostStage} aria-hidden="true">
+              <div style={ghostGlow} />
+              <div style={ghostBody("9%", "8px", 0.78, 0.74)}>
+                <div style={ghostEye(17, 0.78)} />
+                <div style={ghostEye(31, 0.78)} />
+                <div style={ghostMouth(0.78)} />
+                <div style={ghostTail(0, 0.78)} />
+                <div style={ghostTail(18, 0.78)} />
+                <div style={ghostTail(36, 0.78)} />
+              </div>
+              <div style={ghostBody("39%", "14px", 1, 0.94)}>
+                <div style={ghostEye(17)} />
+                <div style={ghostEye(31)} />
+                <div style={ghostMouth(1)} />
+                <div style={ghostTail(0)} />
+                <div style={ghostTail(18)} />
+                <div style={ghostTail(36)} />
+              </div>
+              <div style={ghostBody("70%", "6px", 0.86, 0.82)}>
+                <div style={ghostEye(17, 0.86)} />
+                <div style={ghostEye(31, 0.86)} />
+                <div style={ghostMouth(0.86)} />
+                <div style={ghostTail(0, 0.86)} />
+                <div style={ghostTail(18, 0.86)} />
+                <div style={ghostTail(36, 0.86)} />
+              </div>
             </div>
           </div>
         </div>

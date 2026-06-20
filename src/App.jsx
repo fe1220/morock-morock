@@ -23,7 +23,6 @@ const FALLBACK_TICKETS = [
 const ADMIN_PASSWORD = "morock2026";
 const KAKAO_LINK = "https://qr.kakaopay.com/FWTghOPPE5dc01755";
 const BANK_ACCOUNT = "카카오뱅크 79423225974 김상현";
-const SETLIST_BAND_IMG = `${import.meta.env.BASE_URL}setlist-band-20260620.jpg`;
 const SPACE_LAYERS = [
   "radial-gradient(circle at 52% 14%, rgba(74,19,91,.62) 0, rgba(31,7,48,.34) 25%, transparent 55%)",
   "radial-gradient(circle at 22% 28%, rgba(255,66,183,.16) 0, rgba(255,66,183,.06) 18%, transparent 42%)",
@@ -327,18 +326,6 @@ export default function App() {
     WebkitTextFillColor: "transparent",
   };
 
-  const setlistSection = {
-    marginTop: "14px",
-    width: "min(454px, calc(100vw - 12px))",
-  };
-
-  const setlistBandImage = {
-    display: "block",
-    width: "100%",
-    height: "auto",
-    filter: "drop-shadow(0 0 12px rgba(255,66,183,0.14)) drop-shadow(0 0 16px rgba(77,200,255,0.1))",
-  };
-
   // ── VIEWS ──────────────────────────────────────────────
 
   // MAIN
@@ -360,9 +347,6 @@ export default function App() {
           <button style={ghostPinkBtn} onClick={() => navigateTo("payment")}>
             티켓 구매하기
           </button>
-        </div>
-        <div style={setlistSection}>
-          <img src={SETLIST_BAND_IMG} alt="MOROCK MOROCK setlist and ghost band" style={setlistBandImage} />
         </div>
       </div>
 

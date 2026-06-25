@@ -24,6 +24,18 @@ const ADMIN_PASSWORD = "morock2026";
 const KAKAO_LINK = "https://qr.kakaopay.com/FWTghOPPE5dc01755";
 const BANK_ACCOUNT = "카카오뱅크 79423225974 김상현";
 const SETLIST_BAND_IMG = `${import.meta.env.BASE_URL}setlist-band-20260620-hq.jpg`;
+const SETLIST = [
+  "스물다섯 스물하나",
+  "박하사탕",
+  "입춘",
+  "Creep",
+  "소나기",
+  "비망록",
+  "사랑하게 될 거야",
+  "Pretender",
+  "Letter",
+  "그대에게",
+];
 const SPACE_LAYERS = [
   "radial-gradient(circle at 52% 14%, rgba(74,19,91,.62) 0, rgba(31,7,48,.34) 25%, transparent 55%)",
   "radial-gradient(circle at 22% 28%, rgba(255,66,183,.16) 0, rgba(255,66,183,.06) 18%, transparent 42%)",
@@ -330,8 +342,8 @@ export default function App() {
   const setlistSection = {
     marginTop: "14px",
     width: "min(720px, calc(100vw - 16px))",
-    marginLeft: "50%",
-    transform: "translateX(-50%)",
+    marginLeft: "auto",
+    marginRight: "auto",
   };
 
   const setlistBandImage = {
@@ -339,6 +351,55 @@ export default function App() {
     width: "100%",
     height: "auto",
     filter: "drop-shadow(0 0 12px rgba(255,66,183,0.14)) drop-shadow(0 0 16px rgba(77,200,255,0.1))",
+  };
+
+  const sectionHeading = {
+    fontSize: "13px",
+    color: "#ff3d8b",
+    letterSpacing: "3px",
+    textTransform: "uppercase",
+    textShadow: glowPink,
+    textAlign: "center",
+    marginBottom: "14px",
+  };
+
+  const setlistRow = {
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+    padding: "10px 4px",
+    borderBottom: "1px solid rgba(255,255,255,0.06)",
+  };
+
+  const setlistNo = {
+    flex: "0 0 24px",
+    fontSize: "13px",
+    fontWeight: "800",
+    color: "#4dc8ff",
+    textShadow: glowBlue,
+    fontVariantNumeric: "tabular-nums",
+  };
+
+  const setlistTitle = {
+    fontSize: "15px",
+    fontWeight: "600",
+    color: "#fffffff0",
+    textAlign: "left",
+  };
+
+  const parkingNotice = {
+    display: "flex",
+    gap: "8px",
+    alignItems: "flex-start",
+    marginTop: "12px",
+    padding: "12px 14px",
+    borderRadius: "12px",
+    background: "rgba(255,153,68,0.08)",
+    border: "1px solid rgba(255,153,68,0.28)",
+    fontSize: "13px",
+    lineHeight: "1.5",
+    color: "#ffd9b3",
+    textAlign: "left",
   };
 
   // ── VIEWS ──────────────────────────────────────────────
@@ -363,8 +424,33 @@ export default function App() {
             티켓 구매하기
           </button>
         </div>
-        <div style={setlistSection}>
-          <img src={SETLIST_BAND_IMG} alt="MOROCK MOROCK ghost band" style={setlistBandImage} />
+      </div>
+
+      <div style={setlistSection}>
+        <img src={SETLIST_BAND_IMG} alt="MOROCK MOROCK ghost band" style={setlistBandImage} />
+      </div>
+
+      <div style={pageShell}>
+        <div style={{ ...card, marginTop: "20px", width: "100%" }}>
+          <div style={sectionHeading}>Setlist</div>
+          <div>
+            {SETLIST.map((song, i) => (
+              <div
+                key={song}
+                style={i === SETLIST.length - 1 ? { ...setlistRow, borderBottom: "none" } : setlistRow}
+              >
+                <span style={setlistNo}>{String(i + 1).padStart(2, "0")}</span>
+                <span style={setlistTitle}>{song}</span>
+              </div>
+            ))}
+          </div>
+
+          <div style={parkingNotice}>
+            <span aria-hidden="true">🅿️</span>
+            <span>
+              현장 주차는 어려워요. 가까운 공영주차장이나 대중교통을 이용해 주세요.
+            </span>
+          </div>
         </div>
       </div>
 

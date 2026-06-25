@@ -330,8 +330,8 @@ export default function App() {
   const setlistSection = {
     marginTop: "14px",
     width: "min(720px, calc(100vw - 16px))",
-    marginLeft: "50%",
-    transform: "translateX(-50%)",
+    marginLeft: "auto",
+    marginRight: "auto",
   };
 
   const setlistBandImage = {
@@ -363,9 +363,10 @@ export default function App() {
             티켓 구매하기
           </button>
         </div>
-        <div style={setlistSection}>
-          <img src={SETLIST_BAND_IMG} alt="MOROCK MOROCK ghost band" style={setlistBandImage} />
-        </div>
+      </div>
+
+      <div style={setlistSection}>
+        <img src={SETLIST_BAND_IMG} alt="MOROCK MOROCK ghost band" style={setlistBandImage} />
       </div>
 
       <div
